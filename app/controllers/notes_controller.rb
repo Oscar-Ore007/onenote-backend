@@ -6,7 +6,7 @@ class NotesController < ApplicationController
         else 
             notes = Note.all 
         end 
-        render json: notes 
+        render json: NoteSerializer.new(notes).serializable_hash[:data].map{|hash| hash[:attributes]}
     end 
 
     def create
@@ -19,7 +19,7 @@ class NotesController < ApplicationController
 
     def show
         note = Note.find(params[:id])
-        render json: note 
+        render json: NoteSerializer.new(note).serializable_hash[:data][:attributes]
     end 
 
     def destroy 
