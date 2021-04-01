@@ -10,7 +10,7 @@ class NotesController < ApplicationController
     end 
 
     def create
-        note = Notebook.notes.new(note_params)
+        note = Notebook.find(params[:notebook_id]).notes.new(note_params)
 
         if note.save
             render json: note 
@@ -23,7 +23,7 @@ class NotesController < ApplicationController
     end 
 
     def destroy 
-        note = Note.find(params[:id])
+        note = Notebook.find(params[:notebook_id]).notes.find(params[:id])
         note.destroy 
     end 
 

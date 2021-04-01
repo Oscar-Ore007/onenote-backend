@@ -11,12 +11,20 @@ class NotebooksController < ApplicationController
 
         if notebook.save 
             render json: notebook
+
+        else 
+            render json: {error: "Unable to create your notebook."}
         end 
     end 
 
     def show
         notebook = Notebook.find(params[:id])
         render json: NotebookSerializer.new(notebook).serializable_hash[:data][:attributes]
+    end 
+
+    def update 
+        notebook = Notebook.find(params[:id])
+        notebook.update(notebook_params)
     end 
 
     def destroy 
