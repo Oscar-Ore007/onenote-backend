@@ -5,3 +5,14 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+test_notebook = Notebook.create(title: "Test")
+
+note1 = Note.create(title: "Test Note", content: "Here is my note", date: Date.today, notebook_id: 5)
+
+note2 = Note.create(title: "Test Note two", content: "Here is my second note", date: Date.today, notebook_id: 5)
+
+another_notebook = Notebook.create(title: "OneNote")
+
+test_note = Note.create(title: "Project ", content: "project notes.", date: Date.today, notebook_id: 6)
+
+test_note2 = Note.create(title: "Final Project", content: "Final project notes", date: Date.today, notebook_id: 6)
